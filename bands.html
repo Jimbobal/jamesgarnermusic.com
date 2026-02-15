@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bands — James Garner Music</title>
+  <meta name="description" content="James Garner plays bass with The Cover Loverz and The Out of Handers. Find out more about each band.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+  <style>
+    /* --- Bands Page Specific Styles --- */
+    .band-showcase {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .band-showcase::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          var(--accent) 0px,
+          var(--accent) 1px,
+          transparent 1px,
+          transparent 40px
+        );
+      pointer-events: none;
+    }
+
+    .band-card-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .band-card-full:hover {
+      border-color: var(--border-hover);
+    }
+
+    .band-visual {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .band-visual-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Cover Loverz graphic */
+    .visual-loverz {
+      background: linear-gradient(135deg, #1a1020 0%, #2a1535 30%, #1a1020 60%, #0f0a15 100%);
+    }
+
+    .visual-loverz .graphic-element {
+      font-size: 8rem;
+      opacity: 0.15;
+      position: absolute;
+    }
+
+    .visual-loverz .graphic-element:nth-child(1) { top: 10%; left: 15%; transform: rotate(-15deg); }
+    .visual-loverz .graphic-element:nth-child(2) { bottom: 15%; right: 10%; transform: rotate(10deg); font-size: 6rem; }
+    .visual-loverz .graphic-element:nth-child(3) { top: 50%; left: 60%; transform: rotate(25deg); font-size: 4rem; opacity: 0.08; }
+
+    .visual-loverz .visual-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .visual-loverz .visual-text h3 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: #d4a0e0;
+      letter-spacing: 0.02em;
+    }
+
+    .visual-loverz .visual-text p {
+      color: #a87db8;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-top: 0.5rem;
+    }
+
+    /* Out of Handers graphic */
+    .visual-handers {
+      background: linear-gradient(135deg, #0f1a10 0%, #1a2e15 30%, #0f1a10 60%, #0a120a 100%);
+    }
+
+    .visual-handers .graphic-element {
+      font-size: 8rem;
+      opacity: 0.12;
+      position: absolute;
+    }
+
+    .visual-handers .graphic-element:nth-child(1) { top: 15%; right: 15%; transform: rotate(12deg); }
+    .visual-handers .graphic-element:nth-child(2) { bottom: 10%; left: 10%; transform: rotate(-8deg); font-size: 5rem; }
+    .visual-handers .graphic-element:nth-child(3) { top: 40%; left: 20%; transform: rotate(-20deg); font-size: 4rem; opacity: 0.06; }
+
+    .visual-handers .visual-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .visual-handers .visual-text h3 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: #7ec87e;
+      letter-spacing: 0.02em;
+    }
+
+    .visual-handers .visual-text p {
+      color: #5a9e5a;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-top: 0.5rem;
+    }
+
+    .band-details {
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .band-details h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .band-tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .band-details p {
+      margin-bottom: 1rem;
+    }
+
+    .band-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .band-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .band-meta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .band-meta-value {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .band-members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .member-chip {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .band-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Reverse layout for second band */
+    .band-card-full.reversed {
+      direction: rtl;
+    }
+
+    .band-card-full.reversed > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 768px) {
+      .band-card-full,
+      .band-card-full.reversed {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+
+      .band-card-full.reversed > * {
+        direction: ltr;
+      }
+
+      .band-visual {
+        min-height: 250px;
+      }
+
+      .band-details {
+        padding: 2rem 1.5rem;
+      }
+
+      .visual-loverz .visual-text h3,
+      .visual-handers .visual-text h3 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">James Garner</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bands.html" class="active">Bands</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-label">Bands</span>
+      <h1>The Bands I Play With</h1>
+      <p>From weddings to wild nights out — bass duties across two brilliant bands.</p>
+    </div>
+  </header>
+
+  <!-- The Cover Loverz -->
+  <section class="band-showcase">
+    <div class="container">
+      <div class="band-card-full fade-in">
+        <div class="band-visual">
+          <div class="band-visual-bg visual-loverz">
+            <span class="graphic-element">♫</span>
+            <span class="graphic-element">♥</span>
+            <span class="graphic-element">♪</span>
+            <div class="visual-text">
+              <h3>The Cover Loverz</h3>
+              <p>Est. 2014</p>
+            </div>
+          </div>
+        </div>
+        <div class="band-details">
+          <span class="section-label">Function Band</span>
+          <h2>The Cover Loverz</h2>
+          <p class="band-tagline">"Consider Your Socks, Rocked Off."</p>
+          <p>Hertfordshire's most versatile function band. We bring the energy, the hits, and the party to weddings, corporate events, and celebrations of all kinds.</p>
+          <p>Whether it's singalong classics, floor-fillers, or laid-back vibes for the drinks reception — we tailor the set to make your event unforgettable.</p>
+
+          <div class="band-meta">
+            <div class="band-meta-item">
+              <span class="band-meta-label">Based In</span>
+              <span class="band-meta-value">Hertfordshire</span>
+            </div>
+            <div class="band-meta-item">
+              <span class="band-meta-label">Active Since</span>
+              <span class="band-meta-value">2014</span>
+            </div>
+            <div class="band-meta-item">
+              <span class="band-meta-label">My Role</span>
+              <span class="band-meta-value">Bass Guitar</span>
+            </div>
+          </div>
+
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">The Lineup</p>
+          <div class="band-members">
+            <span class="member-chip">Harri — Vocals</span>
+            <span class="member-chip">Andrew — Guitar / Vocals</span>
+            <span class="member-chip">James — Bass</span>
+            <span class="member-chip">Dave — Drums</span>
+          </div>
+
+          <div class="band-actions">
+            <a href="https://www.weddingbandforhire.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>
+            <a href="contact.html" class="btn btn-outline">Book The Band</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Out of Handers -->
+  <section class="band-showcase">
+    <div class="container">
+      <div class="band-card-full reversed fade-in">
+        <div class="band-visual">
+          <div class="band-visual-bg visual-handers">
+            <span class="graphic-element">🎸</span>
+            <span class="graphic-element">🔊</span>
+            <span class="graphic-element">⚡</span>
+            <div class="visual-text">
+              <h3>The Out of Handers</h3>
+              <p>Live & Loud</p>
+            </div>
+          </div>
+        </div>
+        <div class="band-details">
+          <span class="section-label">Live Band</span>
+          <h2>The Out of Handers</h2>
+          <p class="band-tagline">Bringing the noise.</p>
+          <p>The Out of Handers are a high-energy live band delivering unforgettable performances. James holds down the low end on bass guitar.</p>
+          <p>Check out the band's website for gig dates, videos, setlists and more.</p>
+
+          <div class="band-meta">
+            <div class="band-meta-item">
+              <span class="band-meta-label">My Role</span>
+              <span class="band-meta-value">Bass Guitar</span>
+            </div>
+            <div class="band-meta-item">
+              <span class="band-meta-label">Style</span>
+              <span class="band-meta-value">Live / Covers</span>
+            </div>
+          </div>
+
+          <div class="band-actions">
+            <a href="https://www.theoutofhanders.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>
+            <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="highlights">
+    <div class="container" style="text-align:center;">
+      <h2 style="margin-bottom:1rem;">Looking to Book?</h2>
+      <p style="margin:0 auto 2rem;text-align:center;">Whether you need a function band for your wedding or a live act for your event — drop me a line.</p>
+      <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 James Garner Music. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="https://open.spotify.com/artist/3f3PfKpSiUo5dIbE6Hz9Hr" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.apple.com/us/artist/james-garner/644490700" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

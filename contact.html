@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — James Garner Music</title>
+  <meta name="description" content="Get in touch with James Garner for session bass work, music licensing, songwriting, and collaboration.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">James Garner</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bands.html">Bands</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-label">Contact</span>
+      <h1>Let's Talk</h1>
+      <p>Session work, licensing, songwriting — whatever the project, get in touch.</p>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Form -->
+        <div class="fade-in">
+          <h2 style="margin-bottom: 0.5rem;">Send a Message</h2>
+          <p style="margin-bottom: 2rem;">Fill out the form below and I'll get back to you.</p>
+
+          <form class="contact-form" id="contact-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="session">Session Bass Work</option>
+                <option value="licensing">Music Licensing</option>
+                <option value="songwriting">Songwriting / Collaboration</option>
+                <option value="general">General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="contact-info fade-in">
+          <h3>Based In</h3>
+          <p>Bushey, Hertfordshire, UK<br>Available for remote and in-person sessions.</p>
+
+          <h3>Services</h3>
+          <p>
+            Online Bass Guitar Sessions<br>
+            Music Licensing (Film, TV, Media)<br>
+            Songwriting &amp; Collaboration<br>
+            Live Performance
+          </p>
+
+          <h3>Find Me Online</h3>
+          <div class="social-links">
+            <a href="https://open.spotify.com/artist/3f3PfKpSiUo5dIbE6Hz9Hr" target="_blank" rel="noopener" class="social-link" title="Spotify">
+              <span>S</span>
+            </a>
+            <a href="https://music.apple.com/us/artist/james-garner/644490700" target="_blank" rel="noopener" class="social-link" title="Apple Music">
+              <span>A</span>
+            </a>
+          </div>
+          <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);">
+            For urgent enquiries, reach out via social media for a faster response.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 James Garner Music. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="https://open.spotify.com/artist/3f3PfKpSiUo5dIbE6Hz9Hr" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.apple.com/us/artist/james-garner/644490700" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
