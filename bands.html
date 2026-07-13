@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bands — James Garner Music</title>
-  <meta name="description" content="James Garner plays bass with The Cover Loverz and The Out of Handers. Find out more about each band.">
+  <meta name="description" content="James Garner plays bass with The Cover Loverz, THWP and The Out of Handers. Find out more about each band.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
   <style>
@@ -135,6 +135,43 @@
       margin-top: 0.5rem;
     }
 
+    /* THWP graphic */
+    .visual-thwp {
+      background: linear-gradient(135deg, #200f0f 0%, #3a1515 30%, #200f0f 60%, #150a0a 100%);
+    }
+
+    .visual-thwp .graphic-element {
+      font-size: 8rem;
+      opacity: 0.13;
+      position: absolute;
+    }
+
+    .visual-thwp .graphic-element:nth-child(1) { top: 12%; left: 12%; transform: rotate(-12deg); }
+    .visual-thwp .graphic-element:nth-child(2) { bottom: 12%; right: 12%; transform: rotate(14deg); font-size: 5.5rem; }
+    .visual-thwp .graphic-element:nth-child(3) { top: 45%; left: 55%; transform: rotate(-22deg); font-size: 4rem; opacity: 0.07; }
+
+    .visual-thwp .visual-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .visual-thwp .visual-text h3 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: #e08a8a;
+      letter-spacing: 0.02em;
+    }
+
+    .visual-thwp .visual-text p {
+      color: #b56565;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-top: 0.5rem;
+    }
+
     .band-details {
       padding: 3.5rem;
       display: flex;
@@ -254,6 +291,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="bands.html" class="active">Bands</a></li>
         <li><a href="music.html">Music</a></li>
+        <li><a href="photos.html">Photos</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -269,7 +307,7 @@
     <div class="container">
       <span class="section-label">Bands</span>
       <h1>The Bands I Play With</h1>
-      <p>From weddings to wild nights out — bass duties across two brilliant bands.</p>
+      <p>From weddings to wild nights out — bass duties across three brilliant bands.</p>
     </div>
   </header>
 
@@ -289,7 +327,7 @@
           </div>
         </div>
         <div class="band-details">
-          <span class="section-label">Function Band</span>
+          <span class="section-label">Party Band</span>
           <h2>The Cover Loverz</h2>
           <p class="band-tagline">"Consider Your Socks, Rocked Off."</p>
           <p>Hertfordshire's most versatile function band. We bring the energy, the hits, and the party to weddings, corporate events, and celebrations of all kinds.</p>
@@ -319,8 +357,50 @@
           </div>
 
           <div class="band-actions">
-            <a href="https://www.weddingbandforhire.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>
+            <a href="https://www.thecoverloverz.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>
             <a href="contact.html" class="btn btn-outline">Book The Band</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THWP -->
+  <section class="band-showcase">
+    <div class="container">
+      <div class="band-card-full reversed fade-in">
+        <div class="band-visual">
+          <div class="band-visual-bg visual-thwp">
+            <span class="graphic-element">🎸</span>
+            <span class="graphic-element">🔊</span>
+            <span class="graphic-element">⚡</span>
+            <div class="visual-text">
+              <h3>THWP</h3>
+              <p>Live & Loud</p>
+            </div>
+          </div>
+        </div>
+        <div class="band-details">
+          <span class="section-label">Rock Band</span>
+          <h2>THWP</h2>
+          <p class="band-tagline">Turn it up.</p>
+          <p>THWP are a high-energy rock band delivering unforgettable live performances. James holds down the low end on bass guitar.</p>
+          <p>Head to the band's website for gig dates, videos and more.</p>
+
+          <div class="band-meta">
+            <div class="band-meta-item">
+              <span class="band-meta-label">My Role</span>
+              <span class="band-meta-value">Bass Guitar</span>
+            </div>
+            <div class="band-meta-item">
+              <span class="band-meta-label">Style</span>
+              <span class="band-meta-value">Rock</span>
+            </div>
+          </div>
+
+          <div class="band-actions">
+            <a href="https://thwp.band/index.html" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>
+            <a href="contact.html" class="btn btn-outline">Get In Touch</a>
           </div>
         </div>
       </div>
@@ -330,23 +410,23 @@
   <!-- The Out of Handers -->
   <section class="band-showcase">
     <div class="container">
-      <div class="band-card-full reversed fade-in">
+      <div class="band-card-full fade-in">
         <div class="band-visual">
           <div class="band-visual-bg visual-handers">
-            <span class="graphic-element">🎸</span>
-            <span class="graphic-element">🔊</span>
-            <span class="graphic-element">⚡</span>
+            <span class="graphic-element">🎷</span>
+            <span class="graphic-element">🎺</span>
+            <span class="graphic-element">🎶</span>
             <div class="visual-text">
               <h3>The Out of Handers</h3>
-              <p>Live & Loud</p>
+              <p>Swing & Jazz</p>
             </div>
           </div>
         </div>
         <div class="band-details">
-          <span class="section-label">Live Band</span>
+          <span class="section-label">Jazz Band</span>
           <h2>The Out of Handers</h2>
-          <p class="band-tagline">Bringing the noise.</p>
-          <p>The Out of Handers are a high-energy live band delivering unforgettable performances. James holds down the low end on bass guitar.</p>
+          <p class="band-tagline">Swing, style and standards.</p>
+          <p>The Out of Handers are a jazz and swing band bringing timeless standards to life. James holds down the low end on double bass and bass guitar.</p>
           <p>Check out the band's website for gig dates, videos, setlists and more.</p>
 
           <div class="band-meta">
@@ -356,7 +436,7 @@
             </div>
             <div class="band-meta-item">
               <span class="band-meta-label">Style</span>
-              <span class="band-meta-value">Live / Covers</span>
+              <span class="band-meta-value">Jazz / Swing</span>
             </div>
           </div>
 
@@ -383,8 +463,9 @@
     <div class="container">
       <p class="footer-text">&copy; 2026 James Garner Music. All rights reserved.</p>
       <ul class="footer-links">
-        <li><a href="https://open.spotify.com/artist/3f3PfKpSiUo5dIbE6Hz9Hr" target="_blank" rel="noopener">Spotify</a></li>
-        <li><a href="https://music.apple.com/us/artist/james-garner/644490700" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="https://open.spotify.com/artist/0GlnKhdnf1FeIxWSej7Llt" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.apple.com/gb/artist/james-garner/1461489991" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="https://www.youtube.com/channel/UCu_jgXL42DxpglIxA3vdNKw" target="_blank" rel="noopener">YouTube</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>

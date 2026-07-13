@@ -285,6 +285,37 @@ section {
   animation: fadeUp 0.8s ease forwards 0.8s;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-art {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-art img {
+  width: 100%;
+  border: 1px solid var(--border-hover);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-art {
+    max-width: 320px;
+  }
+}
+
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
@@ -531,12 +562,189 @@ section {
   letter-spacing: 0.05em;
 }
 
-/* Spotify Embed */
-.spotify-embed {
+/* Music / Spotify Embed */
+.spotify-embed,
+.music-embed {
   margin-top: 3rem;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
+}
+
+.music-embed iframe {
+  display: block;
+  width: 100%;
+}
+
+/* --- EP Tracklist --- */
+.tracklist {
+  list-style: none;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.tracklist li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.tracklist li .track-num {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--accent);
+  min-width: 1.6rem;
+}
+
+/* --- Photo gallery --- */
+.gallery {
+  columns: 3;
+  column-gap: 1.5rem;
+}
+
+.gallery-item {
+  display: block;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+  position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  filter: grayscale(10%) contrast(1.02);
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.gallery-item:hover img {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.02);
+}
+
+.gallery-item .gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.5rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    columns: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery {
+    columns: 1;
+  }
+}
+
+/* --- Home live strip --- */
+.live-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.live-strip img {
+  width: 100%;
+  border: 1px solid var(--border-hover);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .live-strip {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --- Archive release (music page) --- */
+.archive-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-grid .release-card {
+    max-width: 300px;
+  }
+}
+
+/* --- Bands grid (home page) --- */
+.bands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.band-link-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  transition: all var(--transition);
+}
+
+.band-link-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.band-link-card .band-role {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.band-link-card h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.band-link-card p {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.band-link-card .band-link-cta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
 }
 
 /* --- Venues --- */
