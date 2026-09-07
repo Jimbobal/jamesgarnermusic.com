@@ -680,6 +680,34 @@ section {
   }
 }
 
+/* --- Video --- */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.video-wrap {
+  border: 1px solid var(--border-hover);
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 /* --- Archive release (music page) --- */
 .archive-grid {
   display: grid;
