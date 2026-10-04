@@ -69,25 +69,44 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      // For now, show a confirmation message
-      // Replace this with your actual form submission (e.g. Formspree, Netlify Forms, etc.)
+      const name = (formData.get('name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const message = (formData.get('message') || '').toString().trim();
+      const subjectSelect = form.querySelector('#subject');
+      const subjectText = subjectSelect
+        ? subjectSelect.options[subjectSelect.selectedIndex].text
+        : 'General Enquiry';
+ 
+      // Build a mailto: URL so the visitor's email client opens with the details prefilled.
+      const subject = `${subjectText} — Website enquiry`;
+      const bodyLines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Subject: ${subjectText}`,
+        '',
+        'Message:',
+        message
+      ];
+      const body = bodyLines.join('\n');
+      const mailtoHref = `mailto:Jamesgarner1976@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+ 
       const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-
-      btn.textContent = 'Message Sent!';
-      btn.style.background = '#4a7c59';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
-        form.reset();
-      }, 3000);
-
-      console.log('Form data:', data);
+      const originalText = btn ? btn.textContent : '';
+      if (btn) {
+        btn.textContent = 'Opening email app…';
+        btn.disabled = true;
+      }
+ 
+      // Trigger the user's mail client. We don't show a fake "sent" state.
+      window.location.href = mailtoHref;
+ 
+      // Restore button text after a short delay (in case the user returns)
+      if (btn) {
+        setTimeout(() => {
+          btn.textContent = originalText || 'Send Message';
+          btn.disabled = false;
+        }, 3000);
+      }
     });
   }
 
